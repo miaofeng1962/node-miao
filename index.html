@@ -1,722 +1,740 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Green Network - Protect Earth</title>
+    <title>Hugging Face - AI社区与平台</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
-        :root {
-            --primary: #2e7d32;
-            --secondary: #4caf50;
-            --accent: #8bc34a;
-            --light: #e8f5e9;
-            --dark: #1b5e20;
-            --text: #333333;
-            --white: #ffffff;
-        }
-
+        
         body {
-            background-color: var(--light);
-            color: var(--text);
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
+            color: #333;
+            background-color: #f8fafc;
         }
-
-        header {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: var(--white);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
+        
         .container {
-            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 20px;
         }
-
-        .nav-container {
+        
+        /* 头部样式 */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 20px 0;
         }
-
+        
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 1.8rem;
+            gap: 12px;
             font-weight: 700;
+            font-size: 24px;
+            color: #ff6b35;
+            text-decoration: none;
         }
-
-        .logo i {
-            font-size: 2rem;
+        
+        .logo-icon {
+            color: #ff6b35;
+            font-size: 28px;
         }
-
+        
         nav ul {
             display: flex;
             list-style: none;
+            gap: 30px;
         }
-
-        nav ul li {
-            margin-left: 2rem;
-        }
-
-        nav ul li a {
-            color: var(--white);
+        
+        nav a {
             text-decoration: none;
+            color: #4a5568;
             font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 0.5rem 0;
-            position: relative;
+            transition: color 0.3s;
         }
-
-        nav ul li a:hover {
-            color: var(--accent);
+        
+        nav a:hover {
+            color: #ff6b35;
         }
-
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent);
-            transition: width 0.3s ease;
-        }
-
-        nav ul li a:hover::after {
-            width: 100%;
-        }
-
+        
+        /* 英雄区域样式 */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 80vh;
-            display: flex;
-            align-items: center;
+            padding: 80px 0;
+            background: linear-gradient(135deg, #fdf2f8 0%, #e0f2fe 100%);
             text-align: center;
-            color: var(--white);
+            border-radius: 0 0 30px 30px;
         }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
+        
         .hero h1 {
             font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+            color: #1a202c;
+            line-height: 1.2;
         }
-
+        
         .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: #4a5568;
         }
-
-        .btn {
+        
+        .cta-button {
             display: inline-block;
-            background-color: var(--accent);
-            color: var(--white);
-            padding: 0.8rem 2rem;
+            background-color: #ff6b35;
+            color: white;
+            padding: 15px 30px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
         }
-
-        .btn:hover {
-            background-color: var(--primary);
+        
+        .cta-button:hover {
+            background-color: #ff5722;
             transform: translateY(-3px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
         }
-
+        
+        /* 主要内容区域 */
         section {
-            padding: 5rem 0;
+            padding: 80px 0;
         }
-
+        
         .section-title {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 60px;
         }
-
+        
         .section-title h2 {
             font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
+            color: #1a202c;
+            margin-bottom: 15px;
         }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--accent);
-            border-radius: 2px;
-        }
-
+        
         .section-title p {
-            color: var(--text);
+            color: #718096;
             max-width: 700px;
             margin: 0 auto;
         }
-
-        .about-content {
+        
+        /* 特性卡片 */
+        .features {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
         }
-
-        .about-img {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .about-img img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-
-        .about-img:hover img {
-            transform: scale(1.05);
-        }
-
-        .about-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--dark);
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 2rem 1rem;
-            background-color: var(--white);
-            border-radius: 10px;
+        
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-
-        .stat-item:hover {
+        
+        .feature-card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
-
-        .stat-item i {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .stat-item h3 {
-            font-size: 2.5rem;
-            color: var(--dark);
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-item p {
-            color: var(--text);
-        }
-
-        .initiatives {
-            background-color: var(--white);
-        }
-
-        .initiatives-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .initiative-card {
-            background-color: var(--light);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-        }
-
-        .initiative-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .initiative-img {
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .initiative-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .initiative-card:hover .initiative-img img {
-            transform: scale(1.1);
-        }
-
-        .initiative-content {
-            padding: 1.5rem;
-        }
-
-        .initiative-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-
-        .initiative-content p {
-            margin-bottom: 1.5rem;
-        }
-
-        .cta {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: var(--white);
-            text-align: center;
-            padding: 5rem 0;
-        }
-
-        .cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .cta p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta .btn {
-            background-color: var(--white);
-            color: var(--primary);
-        }
-
-        .cta .btn:hover {
-            background-color: var(--accent);
-            color: var(--white);
-        }
-
-        footer {
-            background-color: var(--dark);
-            color: var(--white);
-            padding: 3rem 0 1rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-column h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background-color: var(--accent);
-        }
-
-        .footer-column p {
-            margin-bottom: 1rem;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links li a {
-            color: var(--light);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .footer-links li a:hover {
-            color: var(--accent);
-            padding-left: 5px;
-        }
-
-        .social-links {
+        
+        .feature-icon {
+            background-color: #e0f2fe;
+            color: #0ea5e9;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
             display: flex;
-            gap: 1rem;
-        }
-
-        .social-links a {
-            display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: var(--white);
-            text-decoration: none;
-            transition: all 0.3s ease;
+            margin-bottom: 20px;
+            font-size: 28px;
         }
-
-        .social-links a:hover {
-            background-color: var(--accent);
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #1a202c;
+        }
+        
+        /* 演示区域 */
+        .demo-container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .demo-description {
+            margin-bottom: 30px;
+            color: #4a5568;
+        }
+        
+        .demo-input {
+            margin-bottom: 30px;
+        }
+        
+        .demo-input textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            resize: vertical;
+            min-height: 120px;
+            transition: border-color 0.3s;
+        }
+        
+        .demo-input textarea:focus {
+            outline: none;
+            border-color: #ff6b35;
+        }
+        
+        .demo-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .demo-btn {
+            background-color: #f1f5f9;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            flex-grow: 1;
+            max-width: 180px;
+        }
+        
+        .demo-btn:hover {
+            background-color: #e2e8f0;
+        }
+        
+        .demo-btn.primary {
+            background-color: #ff6b35;
+            color: white;
+        }
+        
+        .demo-btn.primary:hover {
+            background-color: #ff5722;
+        }
+        
+        .demo-result {
+            background-color: #f8fafc;
+            border-radius: 10px;
+            padding: 20px;
+            min-height: 100px;
+            display: none;
+        }
+        
+        .demo-result.active {
+            display: block;
+        }
+        
+        .result-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #1a202c;
+        }
+        
+        /* 资源区域 */
+        .resources {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .resource-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .resource-card:hover {
             transform: translateY(-5px);
         }
-
+        
+        .resource-icon {
+            font-size: 36px;
+            margin-bottom: 15px;
+            color: #ff6b35;
+        }
+        
+        .resource-card h4 {
+            margin-bottom: 10px;
+            color: #1a202c;
+        }
+        
+        .resource-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #ff6b35;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .resource-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* 页脚样式 */
+        footer {
+            background-color: #1a202c;
+            color: #cbd5e0;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 15px;
+        }
+        
+        .footer-about {
+            max-width: 300px;
+        }
+        
+        .footer-links h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #cbd5e0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #ff6b35;
+        }
+        
         .copyright {
             text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            border-top: 1px solid #2d3748;
+            font-size: 0.9rem;
+            color: #a0aec0;
         }
-
-        .mobile-menu {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        @media (max-width: 992px) {
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .initiatives-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
+        
+        /* 响应式设计 */
         @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav ul {
+                gap: 15px;
+            }
+            
             .hero h1 {
                 font-size: 2.5rem;
             }
             
-            .hero p {
-                font-size: 1.1rem;
+            .section-title h2 {
+                font-size: 2rem;
             }
             
-            nav ul {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: var(--primary);
+            .demo-container {
+                padding: 25px;
+            }
+            
+            .demo-actions {
                 flex-direction: column;
-                padding: 1rem 0;
-                text-align: center;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
             }
             
-            nav ul.active {
-                display: flex;
+            .demo-btn {
+                max-width: 100%;
             }
-            
-            nav ul li {
-                margin: 0;
-                padding: 0.8rem 0;
-            }
-            
-            .mobile-menu {
-                display: block;
-            }
-            
-            .initiatives-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .stats {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Animation for stats counter */
-        .counter {
-            transition: all 0.5s ease;
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- 头部导航 -->
     <header>
-        <div class="container nav-container">
-            <div class="logo">
-                <i class="fas fa-seedling"></i>
-                <span>Green Network</span>
-            </div>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-robot logo-icon"></i>
+                Hugging Face
+            </a>
             <nav>
-                <div class="mobile-menu">
-                    <i class="fas fa-bars"></i>
-                </div>
                 <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#initiatives">Initiatives</a></li>
-                    <li><a href="#get-involved">Get Involved</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#about">关于</a></li>
+                    <li><a href="#features">功能</a></li>
+                    <li><a href="#demo">演示</a></li>
+                    <li><a href="#resources">资源</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container hero-content">
-            <h1>Protect Our Planet, Preserve Our Future</h1>
-            <p>Join the global movement to create a sustainable world through conservation, education, and community action.</p>
-            <a href="#get-involved" class="btn">Join Our Network</a>
+    <!-- 英雄区域 -->
+    <section class="hero">
+        <div class="container">
+            <h1>构建、训练和部署最先进的机器学习模型</h1>
+            <p>Hugging Face 是一个领先的 AI 社区和平台，让开发者、研究人员和公司能够协作开发最先进的机器学习模型。</p>
+            <a href="https://huggingface.co" target="_blank" class="cta-button">访问 Hugging Face</a>
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- 关于区域 -->
     <section id="about">
         <div class="container">
             <div class="section-title">
-                <h2>About Green Network</h2>
-                <p>We are a global community dedicated to environmental protection and sustainable development.</p>
+                <h2>关于 Hugging Face</h2>
+                <p>Hugging Face 成立于 2016 年，最初是一个聊天机器人应用程序，现已发展成为最受欢迎的机器学习平台之一，拥有超过 100,000 个预训练模型和 10,000 个数据集。</p>
             </div>
-            <div class="about-content">
-                <div class="about-img">
-                    <img src="https://images.unsplash.com/photo-1507591064344-4c6ce005b128?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Team planting trees">
+            
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>协作社区</h3>
+                    <p>全球最大的机器学习社区之一，研究人员和开发者可以分享模型、数据集和机器学习应用。</p>
                 </div>
-                <div class="about-text">
-                    <h3>Our Mission</h3>
-                    <p>Green Network is committed to creating a sustainable future by protecting natural ecosystems, promoting renewable energy, and empowering communities to take environmental action.</p>
-                    <p>Founded in 2010, we've grown from a small grassroots organization to an international network with over 50,000 members across 120 countries.</p>
-                    <p>Our approach combines scientific research, community engagement, and policy advocacy to address the most pressing environmental challenges of our time.</p>
-                    <a href="#" class="btn">Learn More</a>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3>Transformers 库</h3>
+                    <p>最流行的自然语言处理库，支持 PyTorch、TensorFlow 和 JAX，简化了最先进模型的使用。</p>
                 </div>
-            </div>
-            <div class="stats">
-                <div class="stat-item">
-                    <i class="fas fa-tree"></i>
-                    <h3 class="counter" data-target="2500000">0</h3>
-                    <p>Trees Planted</p>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-users"></i>
-                    <h3 class="counter" data-target="50000">0</h3>
-                    <p>Active Members</p>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-globe-americas"></i>
-                    <h3 class="counter" data-target="120">0</h3>
-                    <p>Countries Reached</p>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-recycle"></i>
-                    <h3 class="counter" data-target="1500">0</h3>
-                    <p>Cleanup Projects</p>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <h3>模型托管</h3>
+                    <p>免费托管和部署机器学习模型，提供推理 API 和无缝集成到应用程序中的能力。</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Initiatives Section -->
-    <section class="initiatives" id="initiatives">
+    <!-- 功能区域 -->
+    <section id="features" style="background-color: #f1f5f9;">
         <div class="container">
             <div class="section-title">
-                <h2>Our Initiatives</h2>
-                <p>Discover the key programs and projects we're implementing to protect our planet.</p>
+                <h2>主要功能与产品</h2>
+                <p>Hugging Face 提供一系列强大的工具和服务，加速机器学习开发和部署流程。</p>
             </div>
-            <div class="initiatives-grid">
-                <div class="initiative-card">
-                    <div class="initiative-img">
-                        <img src="https://dialogue.earth/content/uploads/2021/04/lessons-from-the-rush-to-reforest-china-dialogue-2400x1599.jpg" alt="Reforestation">
+            
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-database"></i>
                     </div>
-                    <div class="initiative-content">
-                        <h3>Global Reforestation</h3>
-                        <p>Planting millions of trees worldwide to restore ecosystems, combat climate change, and protect biodiversity.</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
+                    <h3>模型库</h3>
+                    <p>超过 100,000 个预训练模型，涵盖自然语言处理、计算机视觉、音频等多个领域，支持多种框架。</p>
                 </div>
-                <div class="initiative-card">
-                    <div class="initiative-img">
-                        <img src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Ocean Conservation">
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-bar"></i>
                     </div>
-                    <div class="initiative-content">
-                        <h3>Ocean Conservation</h3>
-                        <p>Protecting marine ecosystems, reducing plastic pollution, and promoting sustainable fishing practices.</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
+                    <h3>数据集</h3>
+                    <p>提供数千个公开可用的数据集，用于训练和评估机器学习模型，涵盖各种任务和领域。</p>
                 </div>
-                <div class="initiative-card">
-                    <div class="initiative-img">
-                        <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80" alt="Renewable Energy">
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-code"></i>
                     </div>
-                    <div class="initiative-content">
-                        <h3>Renewable Energy</h3>
-                        <p>Promoting solar, wind, and other clean energy sources to reduce dependence on fossil fuels.</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
+                    <h3>推理 API</h3>
+                    <p>轻松部署模型并创建 API 端点，使模型能够通过简单的 HTTP 请求进行访问。</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta" id="get-involved">
+    <!-- 演示区域 -->
+    <section id="demo">
         <div class="container">
-            <h2>Join Our Global Movement</h2>
-            <p>Together, we can create a sustainable future for generations to come. Every action counts, no matter how small.</p>
-            <a href="#" class="btn">Become a Member</a>
+            <div class="section-title">
+                <h2>演示：情感分析</h2>
+                <p>使用 Hugging Face 的预训练模型进行文本情感分析。输入文本，查看模型如何判断其情感倾向。</p>
+            </div>
+            
+            <div class="demo-container">
+                <div class="demo-description">
+                    <p>此演示模拟了 Hugging Face 情感分析模型的工作原理。模型将分析文本的情感倾向，并给出积极或消极的概率。</p>
+                </div>
+                
+                <div class="demo-input">
+                    <textarea id="text-input" placeholder="输入一段文本进行分析，例如：'我真的很喜欢这个产品，它超出了我的预期！'">Hugging Face 是一个令人惊叹的平台，它让机器学习变得如此简单和有趣！</textarea>
+                </div>
+                
+                <div class="demo-actions">
+                    <button class="demo-btn" id="example-btn">使用示例</button>
+                    <button class="demo-btn primary" id="analyze-btn">分析情感</button>
+                    <button class="demo-btn" id="clear-btn">清空文本</button>
+                </div>
+                
+                <div class="demo-result" id="result">
+                    <div class="result-title">分析结果：</div>
+                    <div id="result-content"></div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer id="contact">
+    <!-- 资源区域 -->
+    <section id="resources">
+        <div class="container">
+            <div class="section-title">
+                <h2>学习资源</h2>
+                <p>开始使用 Hugging Face 所需的所有资源</p>
+            </div>
+            
+            <div class="resources">
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h4>官方文档</h4>
+                    <p>全面的文档和教程，帮助您快速上手 Hugging Face 的各种工具和库。</p>
+                    <a href="https://huggingface.co/docs" target="_blank" class="resource-link">查看文档 →</a>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h4>模型库</h4>
+                    <p>探索数千个预训练模型，从文本分类到图像生成，应有尽有。</p>
+                    <a href="https://huggingface.co/models" target="_blank" class="resource-link">浏览模型 →</a>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4>社区论坛</h4>
+                    <p>与其他开发者和研究人员交流，提问并分享您的项目。</p>
+                    <a href="https://discuss.huggingface.co" target="_blank" class="resource-link">加入讨论 →</a>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <h4>GitHub 仓库</h4>
+                    <p>访问开源代码，为 Transformers 库等 Hugging Face 项目做出贡献。</p>
+                    <a href="https://github.com/huggingface" target="_blank" class="resource-link">查看代码 →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Green Network</h3>
-                    <p>We are dedicated to protecting our planet through collaborative action, education, and sustainable solutions.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
+                <div class="footer-about">
+                    <div class="footer-logo">Hugging Face</div>
+                    <p>Hugging Face 正在通过协作和开源技术民主化优秀的机器学习。</p>
                 </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#initiatives">Initiatives</a></li>
-                        <li><a href="#get-involved">Get Involved</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                
+                <div class="footer-links">
+                    <h4>产品</h4>
+                    <ul>
+                        <li><a href="https://huggingface.co/models" target="_blank">模型</a></li>
+                        <li><a href="https://huggingface.co/datasets" target="_blank">数据集</a></li>
+                        <li><a href="https://huggingface.co/spaces" target="_blank">Spaces</a></li>
+                        <li><a href="https://huggingface.co/docs" target="_blank">文档</a></li>
                     </ul>
                 </div>
-                <div class="footer-column">
-                    <h3>Our Programs</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Reforestation</a></li>
-                        <li><a href="#">Ocean Cleanup</a></li>
-                        <li><a href="#">Wildlife Protection</a></li>
-                        <li><a href="#">Climate Education</a></li>
-                        <li><a href="#">Sustainable Agriculture</a></li>
+                
+                <div class="footer-links">
+                    <h4>公司</h4>
+                    <ul>
+                        <li><a href="https://huggingface.co/about" target="_blank">关于我们</a></li>
+                        <li><a href="https://huggingface.co/jobs" target="_blank">工作机会</a></li>
+                        <li><a href="https://huggingface.co/blog" target="_blank">博客</a></li>
+                        <li><a href="https://huggingface.co/contact" target="_blank">联系我们</a></li>
                     </ul>
                 </div>
-                <div class="footer-column">
-                    <h3>Contact Us</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Copper Creek Drive, New York</p>
-                    <p><i class="fas fa-phone"></i> +1 (312) 171-0771</p>
-                    <p><i class="fas fa-envelope"></i> support@greennetwork.org</p>
+                
+                <div class="footer-links">
+                    <h4>法律</h4>
+                    <ul>
+                        <li><a href="https://huggingface.co/privacy" target="_blank">隐私政策</a></li>
+                        <li><a href="https://huggingface.co/terms" target="_blank">使用条款</a></li>
+                        <li><a href="https://huggingface.co/cookie-policy" target="_blank">Cookie 政策</a></li>
+                    </ul>
                 </div>
             </div>
+            
             <div class="copyright">
-                <p>&copy; 2025 Green Network. All rights reserved.</p>
+                <p>&copy; 2023 Hugging Face, Inc. 本页面为介绍性页面，非官方网站。</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Mobile Menu Toggle
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            document.querySelector('nav ul').classList.toggle('active');
-        });
-
-        // Counter Animation
-        function animateCounters() {
-            const counters = document.querySelectorAll('.counter');
-            const speed = 200; // The lower the slower
+        // 演示功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const textInput = document.getElementById('text-input');
+            const analyzeBtn = document.getElementById('analyze-btn');
+            const exampleBtn = document.getElementById('example-btn');
+            const clearBtn = document.getElementById('clear-btn');
+            const resultDiv = document.getElementById('result');
+            const resultContent = document.getElementById('result-content');
             
-            counters.forEach(counter => {
-                const target = +counter.getAttribute('data-target');
-                const count = +counter.innerText;
+            // 示例文本
+            const examples = [
+                "Hugging Face 是一个令人惊叹的平台，它让机器学习变得如此简单和有趣！",
+                "我对这个服务的客户支持非常失望，等了三天都没有得到回复。",
+                "这部电影真的很棒，特效和剧情都超出了我的预期。",
+                "产品的质量很差，使用一周后就出现了问题。"
+            ];
+            
+            // 分析情感函数
+            function analyzeSentiment(text) {
+                // 这是一个模拟的情感分析函数
+                // 在实际使用中，您可能会调用 Hugging Face 的 API
                 
-                const inc = target / speed;
+                // 简单的情感关键词检测
+                const positiveWords = ['好', '喜欢', '爱', '棒', '优秀', '出色', '完美', '超预期', '惊人', '惊艳', '有趣', '简单', '令人惊叹'];
+                const negativeWords = ['差', '失望', '糟糕', '问题', '差劲', '不喜欢', '讨厌', '糟糕', '不满意', '失败'];
                 
-                if(count < target) {
-                    counter.innerText = Math.ceil(count + inc);
-                    setTimeout(animateCounters, 1);
+                let positiveScore = 0;
+                let negativeScore = 0;
+                
+                // 检查文本中的关键词
+                positiveWords.forEach(word => {
+                    if (text.includes(word)) positiveScore++;
+                });
+                
+                negativeWords.forEach(word => {
+                    if (text.includes(word)) negativeScore++;
+                });
+                
+                // 计算情感倾向
+                let sentiment;
+                let confidence;
+                
+                if (positiveScore > negativeScore) {
+                    sentiment = "积极";
+                    confidence = 70 + (positiveScore * 5);
+                } else if (negativeScore > positiveScore) {
+                    sentiment = "消极";
+                    confidence = 70 + (negativeScore * 5);
                 } else {
-                    counter.innerText = target;
+                    sentiment = "中性";
+                    confidence = 50;
                 }
-            });
-        }
-
-        // Initialize counters when page loads
-        window.addEventListener('load', animateCounters);
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
                 
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
+                // 确保置信度不超过100%
+                confidence = Math.min(confidence, 95);
                 
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
+                return {
+                    sentiment: sentiment,
+                    confidence: confidence,
+                    positiveScore: positiveScore,
+                    negativeScore: negativeScore
+                };
+            }
+            
+            // 分析按钮点击事件
+            analyzeBtn.addEventListener('click', function() {
+                const text = textInput.value.trim();
+                
+                if (text === "") {
+                    alert("请输入要分析的文本");
+                    return;
+                }
+                
+                // 显示加载状态
+                resultContent.innerHTML = "<p>分析中...</p>";
+                resultDiv.classList.add('active');
+                
+                // 模拟API调用延迟
+                setTimeout(() => {
+                    const result = analyzeSentiment(text);
                     
-                    document.querySelector('nav ul').classList.remove('active');
-                }
+                    // 创建结果HTML
+                    let html = `
+                        <p>情感倾向: <strong>${result.sentiment}</strong></p>
+                        <p>置信度: <strong>${result.confidence}%</strong></p>
+                        <div style="margin-top: 15px; background-color: #e2e8f0; height: 10px; border-radius: 5px; overflow: hidden;">
+                            <div style="width: ${result.confidence}%; background-color: ${result.sentiment === '积极' ? '#10b981' : result.sentiment === '消极' ? '#ef4444' : '#6b7280'}; height: 100%;"></div>
+                        </div>
+                        <p style="margin-top: 15px;">检测到的关键词: ${result.positiveScore} 个积极词, ${result.negativeScore} 个消极词</p>
+                        <p style="margin-top: 15px; font-size: 0.9em; color: #718096;">注意: 这是一个简化演示。实际 Hugging Face 模型使用深度学习方法进行更准确的分析。</p>
+                    `;
+                    
+                    resultContent.innerHTML = html;
+                }, 800);
             });
+            
+            // 示例按钮点击事件
+            exampleBtn.addEventListener('click', function() {
+                const randomExample = examples[Math.floor(Math.random() * examples.length)];
+                textInput.value = randomExample;
+            });
+            
+            // 清空按钮点击事件
+            clearBtn.addEventListener('click', function() {
+                textInput.value = "";
+                resultDiv.classList.remove('active');
+            });
+            
+            // 初始加载一个示例
+            textInput.value = examples[0];
         });
     </script>
 </body>
-
 </html>
